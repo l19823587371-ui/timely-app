@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: #F28C28;
+    --primary-dark: #D96B00;
+    --success: #52C41A;
+    --warning: #FAAD14;
+    --danger: #FF4D4F;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-disabled: #BBBBBB;
+    --border: #F2E8DE;
+    --background: #FAF7F2;
+    --card-bg: #FFFFFF;
+    --bg-alert: #FFF1F0;
+    --bg-warm: #FFF6EF;
+    --radius-elder: 16px;
+    --radius-family: 12px;
+    --radius-medical: 8px;
+    --radius-dialog: 20px;
+    --shadow-card: 0 2px 12px rgba(0,0,0,0.06);
+    --shadow-sos: 0 4px 16px rgba(242,140,40,0.3);
+    --shadow-dialog: 0 8px 32px rgba(0,0,0,0.12);
+    --font-sans: "PingFang SC", "Noto Sans SC", sans-serif;
+    --font-mono: "DIN", "SF Mono", monospace;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--text-primary);
+    background: var(--background);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  .card {
+    background: var(--card-bg);
+    border-radius: var(--radius-family);
+    box-shadow: var(--shadow-card);
+    padding: 16px;
+  }
+  .card-elder {
+    background: var(--card-bg);
+    border-radius: var(--radius-elder);
+    box-shadow: var(--shadow-card);
+    padding: 20px;
+  }
+  .btn-primary {
+    background: var(--primary);
+    color: white;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+  .btn-sos {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border-radius: 50%;
+    box-shadow: var(--shadow-sos);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .sos-pulse {
+    animation: sosPulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes sosPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(242,140,40,0.4); }
+  50% { box-shadow: 0 0 0 20px rgba(242,140,40,0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(2px); }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
